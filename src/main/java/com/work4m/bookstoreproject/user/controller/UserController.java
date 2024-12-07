@@ -16,7 +16,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping
+    @GetMapping()
     public List<UserResponseDto> findAll() {
         return userService.getAll();
     }
@@ -26,7 +26,7 @@ public class UserController {
         return userService.findByEmail(email);
     }
 
-    @PostMapping
+    @PostMapping()
     public void create(@RequestBody UserCreateRequestDto userCreateRequestDto) {
         userService.create(userCreateRequestDto);
     }

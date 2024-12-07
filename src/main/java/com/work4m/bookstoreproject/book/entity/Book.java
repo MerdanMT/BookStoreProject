@@ -17,21 +17,28 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
+    @Column(name = "name")
     String name;
 
+    @Column(name = "category")
     String category;
 
+    @Column(name = "author")
     String author;
 
     @Column(name = "publish_date")
     LocalDate publishDate;
 
+    @Column(name = "count")
     Long count;
 
+    @Column(name = "price")
     Long price;
 
+    @Column(name = "barcode")
     String barcode;
 
+    @Column(name = "language")
     String language;
 
 }

@@ -15,7 +15,7 @@ public class BookController {
 
         private final BookService bookService;
 
-        @GetMapping
+        @GetMapping()
         public List<BookResponseDto> findAll() {
             return bookService.getAllBooks();
         }
@@ -25,7 +25,7 @@ public class BookController {
             return bookService.getBookById(id);
         }
 
-        @PostMapping
+        @PostMapping()
         public void create(@RequestBody BookCreateRequestDto bookCreateRequestDto) {
             bookService.createBook(bookCreateRequestDto);
         }

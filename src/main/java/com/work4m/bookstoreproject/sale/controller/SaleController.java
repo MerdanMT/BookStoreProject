@@ -15,7 +15,7 @@ public class SaleController {
 
     private final SaleService saleService;
 
-    @GetMapping
+    @GetMapping()
     public List<SaleResponseDto> findAll() {
         return saleService.findAll();
     }
@@ -25,7 +25,7 @@ public class SaleController {
         return saleService.findById(id);
     }
 
-    @PostMapping
+    @PostMapping()
     public void create(@RequestBody SaleCreateRequestDto saleCreateRequestDto) {
         saleService.save(saleCreateRequestDto);
     }

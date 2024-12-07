@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -31,7 +32,7 @@ public class Sale {
     Long salesmanId;
 
     @Column(name = "sale_date")
-    LocalDateTime saleDate;
+    LocalDate saleDate;
 
     Long count;
 
@@ -39,5 +40,6 @@ public class Sale {
 
     Long discount;
 
+    @Column(name = "payment_id")
     Long paymentId;
 }

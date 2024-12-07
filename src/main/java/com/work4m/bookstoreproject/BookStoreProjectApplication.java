@@ -6,10 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@Mapper
-@ComponentScan(basePackages = "com.work4m.bookstoreproject.book.mapper")
-@ComponentScan(basePackages = "com.work4m.bookstoreproject.user.mapper")
-@ComponentScan(basePackages = "com.work4m.bookstoreproject.sale.mapper")
 
 public class BookStoreProjectApplication {
 
