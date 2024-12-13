@@ -3,7 +3,6 @@ package com.work4m.bookstoreproject.user.service;
 import com.work4m.bookstoreproject.user.dto.request.UserCreateRequestDto;
 import com.work4m.bookstoreproject.user.dto.request.UserUpdateRequestDto;
 import com.work4m.bookstoreproject.user.dto.response.UserResponseDto;
-import com.work4m.bookstoreproject.user.entity.User;
 
 import java.util.List;
 

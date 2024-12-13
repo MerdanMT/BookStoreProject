@@ -1,13 +1,11 @@
 package com.work4m.bookstoreproject.payment.controller;
 
+import com.work4m.bookstoreproject.payment.dto.request.PaymentCreateRequest;
 import com.work4m.bookstoreproject.payment.dto.response.PaymentResponse;
 import com.work4m.bookstoreproject.payment.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,6 +17,17 @@ public class PaymentController {
 
     private final PaymentService paymentService;
 
+    @PostMapping
+    public void createPayment(@RequestBody PaymentCreateRequest paymentCreateRequest){
+
+        paymentService.createPayment(paymentCreateRequest);
+    }
+
+    @DeleteMapping
+    public void deletePayment(@PathVariable Long id){
+
+        paymentService.deletePayment(id);
+    }
     @GetMapping
     public Long totalPaymentCount(){
 

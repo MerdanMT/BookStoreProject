@@ -1,6 +1,6 @@
 package com.work4m.bookstoreproject.payment.service.ServiceImpl;
 
-import com.work4m.bookstoreproject.book.mapper.BookMapper;
+import com.work4m.bookstoreproject.payment.dto.request.PaymentCreateRequest;
 import com.work4m.bookstoreproject.payment.dto.response.PaymentResponse;
 import com.work4m.bookstoreproject.payment.entity.Payment;
 import com.work4m.bookstoreproject.payment.mapper.PaymentMapper;
@@ -19,6 +19,18 @@ public class PaymentServiceImpl implements PaymentService {
 
     private final PaymentRepository paymentRepository;
     private final PaymentMapper paymentMapper;
+
+    @Override
+    public void createPayment(PaymentCreateRequest paymentCreateRequest) {
+
+        Payment payment1 = paymentMapper.toPayment(paymentCreateRequest);
+        paymentRepository.save(payment1);
+    }
+
+    @Override
+    public void deletePayment(Long id) {
+
+    }
 
     @Override
     public Long totalPaymentCount() {

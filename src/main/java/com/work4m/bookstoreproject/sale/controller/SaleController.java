@@ -6,6 +6,7 @@ import com.work4m.bookstoreproject.sale.service.SaleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -38,5 +39,36 @@ public class SaleController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         saleService.delete(id);
+    }
+
+    @GetMapping("/get-sales-by-date-range/{startDate}/{endDate}")
+    public List<SaleResponseDto> getSalesByDateRange(
+            @PathVariable LocalDate startDate, @PathVariable LocalDate endDate){
+
+        return saleService.getSalesByDateRange(startDate, endDate);
+    }
+
+    @GetMapping("/get-sales-by-user-id/{userId}")
+    public List<SaleResponseDto> getSalesByUserId(@PathVariable Long userId){
+
+        return saleService.getSalesByUserId(userId);
+    }
+
+    @GetMapping("/get-sales-by-salesman-id/{salesmanId}")
+    public List<SaleResponseDto> getSalesBySalesmanId(@PathVariable Long salesmanId){
+
+        return saleService.getSalesBySalesmanId(salesmanId);
+    }
+
+    @GetMapping("/calculate-total-sale-amount/{saleId}")
+    public Double calculateTotalSaleAmount(@PathVariable Long saleId){
+
+        return saleService.calculateTotalSaleAmount(saleId);
+    }
+
+    @GetMapping("/get-total-sales-amount")
+    public Double getTotalSalesAmount(){
+
+        return saleService.getTotalSalesAmount();
     }
 }

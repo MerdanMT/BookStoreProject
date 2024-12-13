@@ -10,6 +10,8 @@ import com.work4m.bookstoreproject.sale.service.SaleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -50,5 +52,45 @@ public class SaleServiceImpl implements SaleService {
 
         Sale sale = saleRepository.findById(id).orElse(null);
         saleRepository.save(saleMapper.saleDtoToSale(sale, saleUpdateRequestDto));
+    }
+
+    @Override
+    public List<SaleResponseDto> getSalesByDateRange(LocalDate startDate, LocalDate endDate) {
+
+        return saleRepository.findBySaleDateBetween(startDate,endDate);
+    }
+
+    @Override
+    public List<SaleResponseDto> getSalesByUserId(Long userId) {
+
+        return saleRepository.findByUserId(userId);
+    }
+
+    @Override
+    public List<SaleResponseDto> getSalesBySalesmanId(Long salesmanId) {
+
+        return saleRepository.findBySalesmanId(salesmanId);
+    }
+
+    @Override
+    public Double calculateTotalSaleAmount(Long saleId) {
+
+        Sale sale = saleRepository.findById(saleId).orElse(null);
+
+        if (sale == null) {
+            return 0.0;
+        }
+
+        Double total = sale.getCount()*sale.getPrice();
+
+        return total;
+    }
+
+    @Override
+    public Double getTotalSalesAmount() {
+
+        List<Sale> sales = saleRepository.findAll();
+
+        return sales.stream().mapToDouble(s -> s.getCount() * s.getPrice()).sum();
     }
 }

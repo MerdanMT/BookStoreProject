@@ -18,5 +18,6 @@ public interface RentService {
     void update(Long id, RentUpdateRequestDto rentUpdateRequestDto);
 
     List<RentResponseDto> findAll();
+
 }
 
